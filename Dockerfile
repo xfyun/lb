@@ -10,7 +10,7 @@ RUN mkdir -p output/include && go mod vendor && go build -v -o ./output/AIservic
 
 
 #FROM  artifacts.iflytek.com/docker-private/jianjiang/ubuntu_go:20.04_1.16 as prod
-FROM artifacts.iflytek.com/docker-private/atp/miniconda3:latest
+FROM golang
 MAINTAINER ybyang7
 RUN echo '''deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
 deb-src https://mirrors.aliyun.com/debian/ bullseye main non-free contrib \
