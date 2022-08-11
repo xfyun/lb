@@ -19,7 +19,7 @@ jobs:
   aiges-building:
     strategy:
       matrix:
-        cuda: [10.1, 10.2, 11.2,11.6]
+        cuda: [10.1]
         python: [ 3.9.13 ]
         golang: [1.17]
         ubuntu_os: [1804]
@@ -46,15 +46,6 @@ jobs:
           password: ${{ secrets.AWS_ACCESS_KEY_KEY }}
         env:
           AWS_REGION: us-east-1
-
-      - name:  Setup Python And Generate Dockerfile
-        shell: bash
-        run: |
-          sudo apt install -y python3-pip
-          sudo pip install jinja2 plumbum
-          ls
-          pwd
-          python docker/build.py generate  --all --use_github  
 
       # Set up credentials used by AWS CLI
       - name:  CreateRepo
