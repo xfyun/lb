@@ -3,7 +3,7 @@ MAINTAINER ybyang7@iflytek.com
 
 ENV GOPROXY=https://goproxy.cn,direct
 RUN apt-get update && apt-get install -y libnuma-dev build-essential
-
+RUN ls -lh
 RUN mkdir -p output/include && go mod vendor && go build -v -o ./output/lb -gcflags "-N -l -c 10"
 
 
