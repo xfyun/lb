@@ -3,10 +3,8 @@ MAINTAINER ybyang7@iflytek.com
 
 ENV GOPROXY=https://goproxy.cn,direct
 RUN apt-get update && apt-get install -y libnuma-dev build-essential
-COPY src/github.com/xfyun/aiges /home/aiges
-WORKDIR /home/aiges
 
-RUN mkdir -p output/include && go mod vendor && go build -v -o ./output/AIservice -gcflags "-N -l -c 10"
+RUN mkdir -p output/include && go mod vendor && go build -v -o ./output/lb -gcflags "-N -l -c 10"
 
 
 #FROM  artifacts.iflytek.com/docker-private/jianjiang/ubuntu_go:20.04_1.16 as prod
