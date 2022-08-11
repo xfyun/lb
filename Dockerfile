@@ -24,31 +24,11 @@ deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main non-free cont
 WORKDIR /home/loader
 RUN apt update && apt install -y build-essential vim
 
-
-# Create the environment:
-RUN echo '''name: loader \n\
-channels: \n \
-- defaults \n\
-dependencies: \n \
-- python=3.7.3 \n\
-prefix: /opt/loader ''' > /home/loader/environment.yml &&  conda env create -f environment.yml
-
-
-
-
-# Make RUN commands use the new environment:
-SHELL ["conda", "run", "-n", "loader", "/bin/bash", "-c"]
-
-RUN echo "conda activate loader " >> ~/.bashrc
 ENV TZ Asia/Shanghai
 
 RUN DEBIAN_FRONTEND=noninteractive apt update &&apt install -y libnuma-dev libboost-all-dev
 WORKDIR /home/aiges
 COPY --from=builder /home/aiges/output .
 
-
-COPY ai_cpython_wrapper/ /home/wrapper
-
-RUN cd /home/wrapper && make
 
 #ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/aiges:/home/wrapper/wrappere_lib
