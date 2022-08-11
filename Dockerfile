@@ -1,4 +1,4 @@
-FROM artifacts.iflytek.com/docker-private/jianjiang/ubuntu_go:20.04_1.16 as builder
+FROM golang as builder
 MAINTAINER ybyang7@iflytek.com
 
 ENV GOPROXY=https://goproxy.cn,direct
