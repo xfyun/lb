@@ -3,8 +3,10 @@ MAINTAINER ybyang7@iflytek.com
 
 ENV GOPROXY=https://goproxy.cn,direct
 WORKDIR /build
+RUN pwd
 RUN ls -lh
 COPY * /build/
+RUN pwd
 RUN ls -lh
 RUN mkdir -p output/include &&  go build -v -o ./output/lb -gcflags "-N -l -c 10"
 
