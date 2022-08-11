@@ -7,7 +7,7 @@ WORKDIR /build
 RUN ls -lh
 COPY * /build/
 RUN ls -lh
-RUN mkdir -p output/include && go mod vendor && go build -v -o ./output/lb -gcflags "-N -l -c 10"
+RUN mkdir -p output/include &&  go build -v -o ./output/lb -gcflags "-N -l -c 10"
 
 
 #FROM  artifacts.iflytek.com/docker-private/jianjiang/ubuntu_go:20.04_1.16 as prod
