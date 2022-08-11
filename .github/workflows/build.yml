@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./dist/aiges/ubuntu${{ matrix.ubuntu_os }}/cuda-${{ matrix.cuda }}/Dockerfile
+          file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.ECR_REGISTRY }}/${{env.AIGES_REPO}}:${{ matrix.cuda }}-${{ matrix.golang }}-${{ matrix.python }}-ubuntu${{ matrix.ubuntu_os }}-dev
