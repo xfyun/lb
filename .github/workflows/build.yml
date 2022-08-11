@@ -19,7 +19,6 @@ jobs:
   aiges-building:
     strategy:
       matrix:
-        cuda: [10.1]
         python: [ 3.9.13 ]
         golang: [1.17]
         ubuntu_os: [1804]
@@ -63,4 +62,4 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.ECR_REGISTRY }}/${{env.AIGES_REPO}}:${{ matrix.cuda }}-${{ matrix.golang }}-${{ matrix.python }}-ubuntu${{ matrix.ubuntu_os }}-dev
+          tags: ${{ secrets.ECR_REGISTRY }}/${{env.AIGES_REPO}}:${{ matrix.golang }}-${{ matrix.python }}-ubuntu${{ matrix.ubuntu_os }}-dev
